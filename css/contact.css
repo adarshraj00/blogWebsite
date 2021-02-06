@@ -1,0 +1,32 @@
+.contact-content {
+  display: flex;
+  height: 80vh;
+  margin-top: 30px;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+}
+.contact-content::after {
+  content: "";
+  background-image: url(../img/home1.svg);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  opacity: 0.15;
+  background-size: cover;
+  z-index: -1;
+}
+.form {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+  flex-direction: column;
+}
+.form input,textarea{
+    margin:10px;
+    padding:10px;
+}
+.contact-content p{
+    margin-top:19px;
+}
