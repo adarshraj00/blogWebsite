@@ -1,0 +1,51 @@
+* {
+  place-content: center;
+}
+
+.box {
+  max-width: 60vw;
+  height: 60vh;
+  margin: 20vh auto;
+  background: blue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 20%;
+  justify-content: center;
+}
+.block {
+  padding: 10px;
+}
+.block input {
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.box2 button {
+  background-color: black;
+  margin-top: 20px;
+  padding: 4px;
+  color: white;
+  border-radius: 30%;
+}
+
+.box2 button:hover {
+  background-color: red;
+  cursor: pointer;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+form input{
+    padding: 10px;
+    max-width: 50%;
+    margin:auto;
+}
+
+form button{
+    max-width:30%;
+    margin:auto;
+}

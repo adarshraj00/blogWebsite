@@ -23,10 +23,15 @@
   margin: auto;
   flex-direction: column;
 }
-.form input,textarea{
+.form input,textarea {
     margin:10px;
     padding:10px;
 }
 .contact-content p{
     margin-top:19px;
+}
+.form button{ 
+  width:50vw;
+  height:30px;
+  margin:auto;
 }

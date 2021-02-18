@@ -1,0 +1,20 @@
+head 
+    title login page 
+    link(rel='stylesheet' ,href='/css/login.css',type='text/css')
+    script(type='text/javascript' src='/js/signup.js')
+body      
+    div.box 
+        div.box1 
+            h1 signup
+        div.box2 
+            form( onsubmit='f(this);', id='form' name='form')
+                div.block
+                    p enter userid 
+                    input(type="text" class='idpass' name="id" required)
+                div.block
+                    p enter password       
+                    input(type="password" class='idpass' name="pass" required) 
+                div.block 
+                    p reconfirm password  
+                    input(type="password" class='idpass' name="pass2" required)
+                button(type='submit' id="submit" name="submit")   submit       

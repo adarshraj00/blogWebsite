@@ -1,0 +1,16 @@
+head 
+    title login page 
+    link(rel='stylesheet' ,href='/css/login.css',type='text/css')
+body 
+    div.box 
+        div.box1 
+            h1 login 
+        div.box2 
+            form(method='post' ,action='/home')
+                    p enter userid 
+                    input(type="text" class='idpass' name="id")
+                    p enter password       
+                    input(type="password" class='idpass' name="pass") 
+                    button(type='submit')   submit
+        div.box1 
+            a(href='signup' style='color:white')  sign up 
