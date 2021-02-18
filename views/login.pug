@@ -6,12 +6,12 @@ body
         div.box1 
             h1 login 
         div.box2 
-            form(method='post' ,action='/home')
+            form(method='post' ,action='/login')
                     p enter userid 
                     p#message  #{message}
-                    input(type="text" class='idpass' name="id")
+                    input(type="text" class='idpass' name="id" required)
                     p enter password       
-                    input(type="password" class='idpass' name="pass") 
+                    input(type="password" class='idpass' name="pass" required) 
                     button(type='submit')   submit
         div.box1 
             a(href='signup' style='color:white')  sign up 

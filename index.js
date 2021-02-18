@@ -28,7 +28,19 @@ server.get('/',(req,res)=>{
 server.get('/signup',(req,res)=>{
     res.render('signup',{message:'null'});
 })
-
+server.post('/login',(req,res)=>{
+   idpassmodel.find({name:req.body.id,password:req.body.pass}).exec((err,display)=>{
+        if(err){
+            res.redirect('/');
+        }
+        else{
+            console.log(display);
+            if(display.length==0)    res.redirect('/');
+            else
+            res.redirect('/home');
+        }
+   });
+})
 server.get('/contact.pug',(req,res)=>{
     console.log(req.url);
     res.render('contact');
@@ -41,6 +53,9 @@ server.post('/',(req,res)=>{
     })
     console.log(req.body);
     res.render('login',{message:"user successfully created"});
+})
+server.get('/home',(req,res)=>{
+    res.render('index');
 })
 server.listen(port,()=>{
     console.log(`server listening at ${port}`);
