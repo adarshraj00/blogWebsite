@@ -2,7 +2,7 @@ const fs=require('fs');
 const http=require('http');
 const path= require('path');
 const express=require('express');
-const port=3000;
+const port=80;
 const mongoose =require('mongoose');
 mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
@@ -21,20 +21,17 @@ var schema=new mongoose.Schema({
 });
 const idpassmodel=mongoose.model("idpassmodel",schema,"passwords");
 server.get('/',(req,res)=>{
-    console.log(req.url);
-    console.log(req.body);
     res.render('login');
 })
 server.get('/signup',(req,res)=>{
     res.render('signup',{message:'null'});
 })
-server.post('/login',(req,res)=>{
+server.post('/login',(req,res)=>{ 
    idpassmodel.find({name:req.body.id,password:req.body.pass}).exec((err,display)=>{
         if(err){
             res.redirect('/');
         }
         else{
-            console.log(display);
             if(display.length==0)    res.redirect('/');
             else
             res.redirect('/home');
@@ -51,15 +48,16 @@ server.post('/',(req,res)=>{
         if(err) return console.error(err);
         console.log("document successfully inserted");
     })
-    console.log(req.body);
+   
     res.render('login',{message:"user successfully created"});
 })
 server.get('/home',(req,res)=>{
+    console.log("test");
+    console.log(req.query);
     res.render('index');
 })
-server.listen(port,()=>{
-    console.log(`server listening at ${port}`);
-})
+
+server.listen(process.env.PORT || 80,'0.0.0.0');
 /*
     in mongo db a collection is a grouping of documents
     equivalent to a rdbms table while documents in a collection is like a row in rdbms table

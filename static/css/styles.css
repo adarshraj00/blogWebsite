@@ -38,6 +38,9 @@
 .nav-left ul li {
   list-style: none;
   margin: 0 14px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav-left {
   display: flex;
@@ -118,3 +121,4 @@
     flex-direction: column;
   }
 }
+
