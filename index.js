@@ -4,12 +4,12 @@ const path= require('path');
 const express=require('express');
 const port=80;
 const mongoose =require('mongoose');
-mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log( `we're connected`);
-});
+mongoose.connect("mongodb+srv://adarsh-admin:AoUJo2luTwjrCDHv@cluster0.jjs5s.mongodb.net/blog", {useNewUrlParser: true, useUnifiedTopology: true});
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   console.log( `we're connected`);
+// });
 const server=express();
 server.set('view engine', 'pug');
 server.set('views',path.join(__dirname,'views'));
