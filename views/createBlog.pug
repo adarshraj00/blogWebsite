@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/utils.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>blog-heaven for bloggers</title>
+  </head>
+  <body>
+    a(href="/createBlog")
+     img(src="/img/add.svg", alt="fvs" id="add")
+    <nav class="navigation max-width-1 m-auto">
+      <div class="nav-left">
+        <span style="font-size: 29px">BLOGGING IS LUB</span>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="/search.pug">Search</a></li>
+          <li><a href="/contact.pug">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <form action="/search.pug" method="post" class="form1">
+          <input type="text" placeholder="Article Search" name="query" class="form-input"/>
+          <input type="button" value="search" class="btn" />
+        </form>
+      </div>
+    </nav>
+    <div class="max-width-1 m-auto"><hr class="my" /></div>
+    <form action="/blog" class="max-width-1 m-auto" style="display:flex ;flex-direction:column;">
+        <input type="text" placeholder="create your title">
+        <textarea name="textbox" id="" cols="30" rows="10" style="padding:1%">
+        </textarea>
+        <button>Submit</button>
+    </form>
+  </body>
+</html>

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/adarshraj00/blogWebsite#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongoose": "^5.11.15",
     "pug": "^3.0.0"
   }

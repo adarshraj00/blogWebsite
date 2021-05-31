@@ -11,20 +11,50 @@ mongoose.connect("mongodb+srv://adarsh-admin:AoUJo2luTwjrCDHv@cluster0.jjs5s.mon
 //   console.log( `we're connected`);
 // });
 const server=express();
+const session=require('express-session');
 server.set('view engine', 'pug');
 server.set('views',path.join(__dirname,'views'));
 server.use(express.static('static'));
+server.use(
+    session({
+        secret:"key that will sign cookie",
+        resave:false,
+        saveUninitialized:false
+    })
+);
 server.use(express.urlencoded());
 var schema=new mongoose.Schema({
     name:String,
     password:String
 });
+var schemaEachuser=new mongoose.Schema({
+    title:String,
+    content:String
+})
+var schemaFordata=new mongoose.Schema({
+    user:[schemaEachuser]
+});
 const idpassmodel=mongoose.model("idpassmodel",schema,"passwords");
+const dataModel=mongoose.model("dataModel",schemaFordata,"data");
+
 server.get('/',(req,res)=>{
+    console.log(req.session);
     res.render('login');
 })
 server.get('/signup',(req,res)=>{
-    res.render('signup',{message:'null'});
+   let message="";
+  // console.log(req.query.id);
+     idpassmodel.exists({name:req.query.id}, function(err,result){
+            if(result===true){
+                //console.log("before");
+                message="id already exists";
+                if(req.query.pass!==req.query.pass1){
+                    message="passwords dont match";
+                }
+            }
+            res.render('signup',{message:message});
+    });
+    //console.log("after");
 })
 server.post('/login',(req,res)=>{ 
    idpassmodel.find({name:req.body.id,password:req.body.pass}).exec((err,display)=>{
@@ -32,7 +62,7 @@ server.post('/login',(req,res)=>{
             res.redirect('/');
         }
         else{
-            if(display.length==0)    res.redirect('/');
+            if(display.length==0)    res.redirect('/ ');
             else
             res.redirect('/home');
         }
@@ -42,19 +72,26 @@ server.get('/contact.pug',(req,res)=>{
     console.log(req.url);
     res.render('contact');
 })
-server.post('/',(req,res)=>{
+server.post('/',async(req,res)=>{
+    
+    let user=await idpassmodel.findOne({name:req.body.id});
+    if(user){
+        return res.render('signup',{message:"username already exists"});
+    }
     var doc1=new idpassmodel({name:req.body.id,password:req.body.pass});
     doc1.save((err,doc)=>{
         if(err) return console.error(err);
         console.log("document successfully inserted");
     })
-   
     res.render('login',{message:"user successfully created"});
 })
 server.get('/home',(req,res)=>{
     console.log("test");
     console.log(req.query);
     res.render('index');
+})
+server.get('/createBlog',(req,res)=>{
+    res.render('createBlog');
 })
 
 server.listen(process.env.PORT || 80,'0.0.0.0');
@@ -73,4 +110,10 @@ server.listen(process.env.PORT || 80,'0.0.0.0');
     });
     now  
     const Kitten = mongoose.model('Kitten', kittySchema);
+*/
+
+/*
+
+first create createBlog page  
+
 */
